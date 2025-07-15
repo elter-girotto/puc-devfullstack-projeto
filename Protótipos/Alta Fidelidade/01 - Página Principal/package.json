@@ -1,0 +1,24 @@
+{
+  "name": "uxpin-code-export",
+  "version": "1.0.0",
+  "dependencies": {
+    "react":"18.3.1",
+    "react-dom":"18.3.1",
+    "@types/react":"18.3.1",
+    "@uxpin/expressions":"0.0.3",
+    "antd":"latest",
+    "@ant-design/icons":"latest",
+    "@mui/x-charts":"latest",
+    "@mui/material":"5.16.6",
+    "@mui/system":"latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+   }
+}
