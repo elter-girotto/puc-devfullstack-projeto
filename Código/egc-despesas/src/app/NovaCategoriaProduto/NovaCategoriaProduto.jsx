@@ -20,14 +20,13 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function NovaCategoriaProduto() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [value, setValue] = React.useState(undefined);
-const [value2, setValue2] = React.useState(undefined);
-const [value4, setValue4] = React.useState('Dentista');
-const [value6, setValue6] = React.useState('Procedimentos odontológicos');
+const [value2, setValue2] = React.useState('Saúde');
+const [value4, setValue4] = React.useState('Produtos relacionados à saúde, higiene e cuidados pessoais');
 
   return (<Layout
   hasSider={true}
@@ -44,7 +43,7 @@ const [value6, setValue6] = React.useState('Procedimentos odontológicos');
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-5fbbe8.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-9bbbfd.PNG"
         width={130}
       />
     </Col>
@@ -238,7 +237,7 @@ const [value6, setValue6] = React.useState('Procedimentos odontológicos');
             <Typography.Link
               href="#/"
             >
-              Nova subcategoria de produtos/serviços
+              Nova categoria de produtos
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -254,51 +253,40 @@ const [value6, setValue6] = React.useState('Procedimentos odontológicos');
       >
         <Form
           layout="horizontal"
-          style={{ padding: "14px", maxWidth: "600px" }}
-          colon={true}
-          size="middle"
+          style={{ padding: "24px", maxWidth: "600px" }}
         >
           <Typography.Title
             level={4}
           >
-            Subcategoria de produtos/serviços
+            Categoria de produtos
           </Typography.Title>
           <Divider />
           <Form.Item
-            label="Categoria"
+            label="Código da categoria"
           >
             <Input
-              placeholder="15 - Saúde"
+              placeholder="15"
               disabled={true}
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
           </Form.Item>
           <Form.Item
-            label="Código da subcategoria"
+            label="Nome da categoria"
           >
             <Input
-              placeholder="21"
-              disabled={true}
+              placeholder="Saúde"
               value={value2}
               onChange={(...args) => { let value2 = args[0].target.value; setValue2(value2); }}
             />
           </Form.Item>
           <Form.Item
-            label="Nome da subcategoria"
-          >
-            <Input
-              value={value4}
-              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Descrição da subcategoria"
+            label="Descrição da categoria"
           >
             <Input
               placeholder=""
-              value={value6}
-              onChange={(...args) => { let value6 = args[0].target.value; setValue6(value6); }}
+              value={value4}
+              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
             />
           </Form.Item>
           <Form.Item>

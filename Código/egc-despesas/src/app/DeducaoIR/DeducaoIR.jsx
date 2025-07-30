@@ -1,6 +1,5 @@
 import React from 'react';
 import { Badge } from 'antd';
-import { BarChart } from '@mui/x-charts/BarChart';
 import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
 import { Card } from 'antd';
@@ -23,13 +22,11 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function DeducaoIR() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [visible, setVisible] = React.useState(false);
-const [visible2, setVisible2] = React.useState(false);
-const [visible4, setVisible4] = React.useState(false);
 const [value, setValue] = React.useState(undefined);
 
   return (<Layout
@@ -47,14 +44,13 @@ const [value, setValue] = React.useState(undefined);
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-1bf536.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-174248.PNG"
         width={130}
       />
     </Col>
     <Menu
       mode="inline"
       theme="dark"
-      selectable={true}
       triggerSubMenuAction="click"
       selectedKeys={selectedKeys}
       onSelect={(...args) => { let selectedKeys = args[0].selectedKeys; setSelectedKeys(selectedKeys); }}
@@ -117,6 +113,7 @@ const [value, setValue] = React.useState(undefined);
       <Menu.Item
         key="deducaoIR"
         label="Dedução IR"
+        disabled={true}
         icon={
           <Icon
             icon="CalendarOutlined"
@@ -231,6 +228,13 @@ const [value, setValue] = React.useState(undefined);
               Home
             </Typography.Link>
           </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Typography.Link
+              href="#/"
+            >
+              Dedução IR
+            </Typography.Link>
+          </Breadcrumb.Item>
         </Breadcrumb>
       </Space>
       <Row
@@ -240,54 +244,7 @@ const [value, setValue] = React.useState(undefined);
           xs={24}
           xl={8}
           md={12}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Row
-              justify="space-between"
-            >
-              <Col>
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                    mark={true}
-                    code={true}
-                  >
-                    5
-                  </Typography.Title>
-                  <Typography.Text
-                    type="success"
-                    strong={true}
-                    ellipsis={true}
-                  >
-                    +30%
-                  </Typography.Text>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Quantidade de despesas no mês
-                
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="CalendarOutlined"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
+        />
         <Col
           xs={24}
           md={12}
@@ -308,20 +265,14 @@ const [value, setValue] = React.useState(undefined);
                     level={3}
                     style={{ margin: 0 }}
                   >
-                    R$ 1.419,11
+                    R$ 52.427,70
                   </Typography.Title>
-                  <Typography.Text
-                    type="success"
-                    strong={true}
-                  >
-                    +20%
-                  </Typography.Text>
                 </Space>
                 <Typography.Text
                   type="secondary"
                   strong={true}
                 >
-                  Valor gasto no mês
+                  Valor dedutível
                 </Typography.Text>
               </Col>
               <Col
@@ -338,53 +289,11 @@ const [value, setValue] = React.useState(undefined);
         </Col>
         <Col
           xs={24}
-          md={12}
-          xl={8}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Row>
-              <Col
-                xs={18}
-              >
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                  >
-                    Crédito
-                  </Typography.Title>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Pagamento mais utilizado
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="CreditCardOutlined"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col
-          xs={24}
           md={14}
-          xl={15}
+          xl={24}
         >
           <Card
-            title="Despesas"
+            title="Despesas dedutíveis no Imposto de Renda"
             extra={
               <Icon
                 icon="MoreOutlined"
@@ -392,8 +301,8 @@ const [value, setValue] = React.useState(undefined);
             }
           >
             <Input
-              placeholder="Consulte por data, estabelecimento, valor ou categoria"
-              style={{ width: "600px" }}
+              placeholder="Filtre por data, estabelecimento, valor, pagamento ou categoria"
+              style={{ width: "800px" }}
               readOnly={true}
               prefix={
                 <Icon
@@ -404,31 +313,9 @@ const [value, setValue] = React.useState(undefined);
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
             <Table
-              dataSource={[ { key: "1", data: "24/04/2025", estabelecimento: "Supermercado Gaste Menos", valor: "R$ 825,12", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "2", data: "21/04/2025", estabelecimento: "Farmácia Pague Menos", valor: "R$ 122,14", pagamento: "Crédito", categoria: <Tag color="processing">Saúde</Tag> }, { key: "3", data: "18/04/2025", estabelecimento: "Pet Shop Caramelo", valor: "R$ 125,00", pagamento: "Pix", categoria: <Tag color="error">Pet</Tag> }, { key: "4", data: "15/04/2025", estabelecimento: "Supermercado Tauste", valor: "R$ 157,50", pagamento: "Débito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "5", data: "14/04/2025", estabelecimento: "Supermercados Confiança", valor: "R$ 189,35", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> } ]}
+              dataSource={[ { key: "2", data: "21/04/2025", estabelecimento: "Odontonorte - dentista", valor: "R$ 825,00", pagamento: "Crédito", categoria: <Tag color="processing">Saúde</Tag> }, { key: "2", data: "14/05/2025", estabelecimento: "PUCRS - Universidade Católica do RS", valor: "R$ 625,00", pagamento: "Pix", categoria: <Tag color="error">Educação</Tag> }, { key: "3", data: "15/04/2025", estabelecimento: "João da Silva Santos", valor: "R$ 350,00", pagamento: "Débito", categoria: <Tag color="processing">Saúde</Tag> } ]}
               columns={[ { title: "DATA", dataIndex: "data", key: "data" }, { title: "ESTABELECIMENTO", dataIndex: "estabelecimento", key: "estabelecimento" }, { title: "VALOR", dataIndex: "valor", key: "valor" }, { title: "PAGAMENTO", dataIndex: "pagamento", key: "pagamento" }, { title: "CATEGORIA", dataIndex: "categoria", key: "categoria" } ]}
               scroll={{  }}
-            />
-          </Card>
-        </Col>
-        <Col
-          xs={24}
-          md={10}
-          xl={9}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Typography.Title
-              level={4}
-              style={{ marginTop: 0, marginBottom: "20px" }}
-              disabled={false}
-            >
-              Valores gastos por categoria
-            </Typography.Title>
-            <BarChart
-              xAxis={[ { scaleType: "band", data: [ "Aliment.", "Saúde", "Educação", "Lazer", "Transporte", "Pet" ] } ]}
-              series={[ { data: [ "9", "6", "5", "2", "1", "1" ] } ]}
-              height={400}
             />
           </Card>
         </Col>

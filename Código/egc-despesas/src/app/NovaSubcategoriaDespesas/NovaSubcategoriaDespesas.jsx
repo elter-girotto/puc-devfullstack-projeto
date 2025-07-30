@@ -20,13 +20,14 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function NovaSubcategoriaDespesas() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [value, setValue] = React.useState(undefined);
-const [value2, setValue2] = React.useState('Saúde');
-const [value4, setValue4] = React.useState('Despesas com mensalidades escolares, cursos de idiomas, livros e cursos extras.');
+const [value2, setValue2] = React.useState(undefined);
+const [value4, setValue4] = React.useState('Livros');
+const [value6, setValue6] = React.useState('Despesas com livros didáticos, literatura, físicos e digitais');
 
   return (<Layout
   hasSider={true}
@@ -43,7 +44,7 @@ const [value4, setValue4] = React.useState('Despesas com mensalidades escolares,
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-8701be.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-e3d075.PNG"
         width={130}
       />
     </Col>
@@ -237,7 +238,7 @@ const [value4, setValue4] = React.useState('Despesas com mensalidades escolares,
             <Typography.Link
               href="#/"
             >
-              Nova categoria de despesas
+              Nova subcategoria de despesas
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -253,42 +254,51 @@ const [value4, setValue4] = React.useState('Despesas com mensalidades escolares,
       >
         <Form
           layout="horizontal"
-          style={{ padding: "24px", maxWidth: "600px" }}
+          style={{ padding: "14px", maxWidth: "600px" }}
+          colon={true}
+          size="middle"
         >
           <Typography.Title
             level={4}
           >
-            Categoria de despesas
+            Subcategoria de despesas
           </Typography.Title>
           <Divider />
           <Form.Item
-            label="Código da categoria de despesa"
+            label="Categoria de despesa"
           >
             <Input
-              placeholder="18"
+              placeholder="18 - Educação"
               disabled={true}
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
           </Form.Item>
           <Form.Item
-            label="Nome da categoria de despesa"
+            label="Código da subcategoria de despesa"
           >
             <Input
-              placeholder="Educação"
+              placeholder="23"
+              disabled={true}
               value={value2}
               onChange={(...args) => { let value2 = args[0].target.value; setValue2(value2); }}
             />
           </Form.Item>
           <Form.Item
-            label="Descrição da categoria de despesa"
+            label="Nome da subcategoria de despesa"
+          >
+            <Input
+              value={value4}
+              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="Descrição da subcategoria de despesa"
           >
             <Input
               placeholder=""
-              size="middle"
-              type="text"
-              value={value4}
-              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
+              value={value6}
+              onChange={(...args) => { let value6 = args[0].target.value; setValue6(value6); }}
             />
           </Form.Item>
           <Form.Item>

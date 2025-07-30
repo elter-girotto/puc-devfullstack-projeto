@@ -1,5 +1,6 @@
 import React from 'react';
 import { Badge } from 'antd';
+import { BarChart } from '@mui/x-charts/BarChart';
 import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
 import { Card } from 'antd';
@@ -14,6 +15,7 @@ import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
 import { Table } from 'antd';
+import { Tag } from 'antd';
 import { Typography } from 'antd';
 
 function Icon(props) {
@@ -21,10 +23,13 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function Principal() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
+const [visible, setVisible] = React.useState(false);
+const [visible2, setVisible2] = React.useState(false);
+const [visible4, setVisible4] = React.useState(false);
 const [value, setValue] = React.useState(undefined);
 
   return (<Layout
@@ -42,13 +47,15 @@ const [value, setValue] = React.useState(undefined);
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-708c8e.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-1bf536.PNG"
         width={130}
       />
     </Col>
     <Menu
       mode="inline"
       theme="dark"
+      selectable={true}
+      triggerSubMenuAction="click"
       selectedKeys={selectedKeys}
       onSelect={(...args) => { let selectedKeys = args[0].selectedKeys; setSelectedKeys(selectedKeys); }}
     >
@@ -224,13 +231,6 @@ const [value, setValue] = React.useState(undefined);
               Home
             </Typography.Link>
           </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Typography.Link
-              href="#/"
-            >
-              Estabelecimentos
-            </Typography.Link>
-          </Breadcrumb.Item>
         </Breadcrumb>
       </Space>
       <Row
@@ -238,16 +238,153 @@ const [value, setValue] = React.useState(undefined);
       >
         <Col
           xs={24}
+          xl={8}
+          md={12}
+        >
+          <Card
+            style={{ height: "100%" }}
+          >
+            <Row
+              justify="space-between"
+            >
+              <Col>
+                <Space
+                  size="small"
+                  align="baseline"
+                >
+                  <Typography.Title
+                    level={3}
+                    style={{ margin: 0 }}
+                    mark={true}
+                    code={true}
+                  >
+                    5
+                  </Typography.Title>
+                  <Typography.Text
+                    type="success"
+                    strong={true}
+                    ellipsis={true}
+                  >
+                    +30%
+                  </Typography.Text>
+                </Space>
+                <Typography.Text
+                  type="secondary"
+                  strong={true}
+                >
+                  Quantidade de despesas no mês
+                
+                </Typography.Text>
+              </Col>
+              <Col
+                xs={6}
+                style={{ textAlign: "center" }}
+              >
+                <Icon
+                  icon="CalendarOutlined"
+                  style={{ fontSize: "60px", color: "#1890ff" }}
+                />
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+        <Col
+          xs={24}
           md={12}
           xl={8}
-        />
+        >
+          <Card
+            style={{ height: "100%" }}
+          >
+            <Row>
+              <Col
+                xs={18}
+              >
+                <Space
+                  size="small"
+                  align="baseline"
+                >
+                  <Typography.Title
+                    level={3}
+                    style={{ margin: 0 }}
+                  >
+                    R$ 1.419,11
+                  </Typography.Title>
+                  <Typography.Text
+                    type="success"
+                    strong={true}
+                  >
+                    +20%
+                  </Typography.Text>
+                </Space>
+                <Typography.Text
+                  type="secondary"
+                  strong={true}
+                >
+                  Valor gasto no mês
+                </Typography.Text>
+              </Col>
+              <Col
+                xs={6}
+                style={{ textAlign: "center" }}
+              >
+                <Icon
+                  icon="DollarCircleOutlined"
+                  style={{ fontSize: "60px", color: "#1890ff" }}
+                />
+              </Col>
+            </Row>
+          </Card>
+        </Col>
+        <Col
+          xs={24}
+          md={12}
+          xl={8}
+        >
+          <Card
+            style={{ height: "100%" }}
+          >
+            <Row>
+              <Col
+                xs={18}
+              >
+                <Space
+                  size="small"
+                  align="baseline"
+                >
+                  <Typography.Title
+                    level={3}
+                    style={{ margin: 0 }}
+                  >
+                    Crédito
+                  </Typography.Title>
+                </Space>
+                <Typography.Text
+                  type="secondary"
+                  strong={true}
+                >
+                  Pagamento mais utilizado
+                </Typography.Text>
+              </Col>
+              <Col
+                xs={6}
+                style={{ textAlign: "center" }}
+              >
+                <Icon
+                  icon="CreditCardOutlined"
+                  style={{ fontSize: "60px", color: "#1890ff" }}
+                />
+              </Col>
+            </Row>
+          </Card>
+        </Col>
         <Col
           xs={24}
           md={14}
-          xl={24}
+          xl={15}
         >
           <Card
-            title="Estabelecimentos"
+            title="Despesas"
             extra={
               <Icon
                 icon="MoreOutlined"
@@ -255,7 +392,7 @@ const [value, setValue] = React.useState(undefined);
             }
           >
             <Input
-              placeholder="Filtre por nome do estabelecimento, CNPJ, endereço ou cidade"
+              placeholder="Consulte por data, estabelecimento, valor ou categoria"
               style={{ width: "600px" }}
               readOnly={true}
               prefix={
@@ -267,9 +404,31 @@ const [value, setValue] = React.useState(undefined);
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
             <Table
-              dataSource={[ { key: "1", "cnpj-cpf": "12.151.422/0001-55", nome: "Supermercado Gaste Menos", endereco: "RUA 4A, 1560 - Vicente Pires", cidade: "Brasília", uf: "DF" }, { key: "2", "cnpj-cpf": "51.467.857/0001-80", nome: "Farmácia Pague Menos", endereco: "Quadra 107, 850 - Asa Sul", cidade: "Brasília", uf: "DF" }, { key: "3", "cnpj-cpf": "41.121.004/0001-72", nome: "Pet Shop Caramelo", endereco: "Rua 36 norte, 3500 - Águas Claras", cidade: "Brasília", uf: "DF" }, { key: "4", "cnpj-cpf": "10.421.452/0001-60", nome: "Supermercado Tauste Ltda", endereco: "Avenida Tiradentes, 1131", cidade: "Marília", uf: "SP" }, { key: "5", "cnpj-cpf": "12.432.564/0001-40", nome: "Confiança Supermercados", endereco: "Rua. Dr. Thimo Bruno Belucci, 255 - Jardim Aquarius", cidade: "Marília", uf: "SP" } ]}
-              columns={[ { title: "CNPJ/CPF", dataIndex: "cnpj-cpf", key: "cnpj-cpf" }, { title: "NOME", dataIndex: "nome", key: "nome" }, { title: "ENDEREÇO", dataIndex: "endereco", key: "endereco" }, { title: "CIDADE", dataIndex: "cidade", key: "cidade" }, { title: "UF", dataIndex: "uf", key: "uf" }, { title: " ", dataIndex: "editar-produto", key: "editar-produto" }, { title: " ", dataIndex: "excluir-produto", key: "excluir-produto" } ]}
+              dataSource={[ { key: "1", data: "24/04/2025", estabelecimento: "Supermercado Gaste Menos", valor: "R$ 825,12", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "2", data: "21/04/2025", estabelecimento: "Farmácia Pague Menos", valor: "R$ 122,14", pagamento: "Crédito", categoria: <Tag color="processing">Saúde</Tag> }, { key: "3", data: "18/04/2025", estabelecimento: "Pet Shop Caramelo", valor: "R$ 125,00", pagamento: "Pix", categoria: <Tag color="error">Pet</Tag> }, { key: "4", data: "15/04/2025", estabelecimento: "Supermercado Tauste", valor: "R$ 157,50", pagamento: "Débito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "5", data: "14/04/2025", estabelecimento: "Supermercados Confiança", valor: "R$ 189,35", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> } ]}
+              columns={[ { title: "DATA", dataIndex: "data", key: "data" }, { title: "ESTABELECIMENTO", dataIndex: "estabelecimento", key: "estabelecimento" }, { title: "VALOR", dataIndex: "valor", key: "valor" }, { title: "PAGAMENTO", dataIndex: "pagamento", key: "pagamento" }, { title: "CATEGORIA", dataIndex: "categoria", key: "categoria" } ]}
               scroll={{  }}
+            />
+          </Card>
+        </Col>
+        <Col
+          xs={24}
+          md={10}
+          xl={9}
+        >
+          <Card
+            style={{ height: "100%" }}
+          >
+            <Typography.Title
+              level={4}
+              style={{ marginTop: 0, marginBottom: "20px" }}
+              disabled={false}
+            >
+              Valores gastos por categoria
+            </Typography.Title>
+            <BarChart
+              xAxis={[ { scaleType: "band", data: [ "Aliment.", "Saúde", "Educação", "Lazer", "Transporte", "Pet" ] } ]}
+              series={[ { data: [ "9", "6", "5", "2", "1", "1" ] } ]}
+              height={400}
             />
           </Card>
         </Col>

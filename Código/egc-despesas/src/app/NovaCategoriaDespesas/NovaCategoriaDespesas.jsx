@@ -2,10 +2,10 @@ import React from 'react';
 import { Badge } from 'antd';
 import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
-import { Card } from 'antd';
 import { Col } from 'antd';
 import { Divider } from 'antd';
 import { Dropdown } from 'antd';
+import { Form } from 'antd';
 import * as Icons from '@ant-design/icons';
 import { Image } from 'antd';
 import { Input } from 'antd';
@@ -13,8 +13,6 @@ import { Layout } from 'antd';
 import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
-import { Table } from 'antd';
-import { Tag } from 'antd';
 import { Typography } from 'antd';
 
 function Icon(props) {
@@ -22,12 +20,13 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function NovaCategoriaDespesas() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
-const [visible, setVisible] = React.useState(false);
 const [value, setValue] = React.useState(undefined);
+const [value2, setValue2] = React.useState('Saúde');
+const [value4, setValue4] = React.useState('Despesas com mensalidades escolares, cursos de idiomas, livros e cursos extras.');
 
   return (<Layout
   hasSider={true}
@@ -44,14 +43,13 @@ const [value, setValue] = React.useState(undefined);
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-174248.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-8701be.PNG"
         width={130}
       />
     </Col>
     <Menu
       mode="inline"
       theme="dark"
-      triggerSubMenuAction="click"
       selectedKeys={selectedKeys}
       onSelect={(...args) => { let selectedKeys = args[0].selectedKeys; setSelectedKeys(selectedKeys); }}
     >
@@ -91,6 +89,7 @@ const [value, setValue] = React.useState(undefined);
       <Menu.Item
         key="categorias"
         label="Categorias"
+        disabled={true}
         icon={
           <Icon
             icon="DatabaseOutlined"
@@ -113,7 +112,6 @@ const [value, setValue] = React.useState(undefined);
       <Menu.Item
         key="deducaoIR"
         label="Dedução IR"
-        disabled={true}
         icon={
           <Icon
             icon="CalendarOutlined"
@@ -232,115 +230,84 @@ const [value, setValue] = React.useState(undefined);
             <Typography.Link
               href="#/"
             >
-              Dedução IR
+              Categorias de despesas
+            </Typography.Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <Typography.Link
+              href="#/"
+            >
+              Nova categoria de despesas
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
       </Space>
-      <Row
-        gutter={[ 16, 16 ]}
+    </Layout.Content>
+    <Row
+      gutter={[ 16, 16 ]}
+      justify="center"
+    >
+      <Col
+        xs={24}
+        sm={12}
       >
-        <Col
-          xs={24}
-          xl={8}
-          md={12}
-        />
-        <Col
-          xs={24}
-          md={12}
-          xl={8}
+        <Form
+          layout="horizontal"
+          style={{ padding: "24px", maxWidth: "600px" }}
         >
-          <Card
-            style={{ height: "100%" }}
+          <Typography.Title
+            level={4}
           >
-            <Row>
-              <Col
-                xs={18}
-              >
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                  >
-                    R$ 52.427,70
-                  </Typography.Title>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Valor dedutível
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="DollarCircleOutlined"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col
-          xs={24}
-          md={14}
-          xl={24}
-        >
-          <Card
-            title="Despesas dedutíveis no Imposto de Renda"
-            extra={
-              <Icon
-                icon="MoreOutlined"
-              />
-            }
+            Categoria de despesas
+          </Typography.Title>
+          <Divider />
+          <Form.Item
+            label="Código da categoria de despesa"
           >
             <Input
-              placeholder="Filtre por data, estabelecimento, valor, pagamento ou categoria"
-              style={{ width: "800px" }}
-              readOnly={true}
-              prefix={
-                <Icon
-                  icon="SearchOutlined"
-                />
-              }
+              placeholder="18"
+              disabled={true}
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
-            <Table
-              dataSource={[ { key: "2", data: "21/04/2025", estabelecimento: "Odontonorte - dentista", valor: "R$ 825,00", pagamento: "Crédito", categoria: <Tag color="processing">Saúde</Tag> }, { key: "2", data: "14/05/2025", estabelecimento: "PUCRS - Universidade Católica do RS", valor: "R$ 625,00", pagamento: "Pix", categoria: <Tag color="error">Educação</Tag> }, { key: "3", data: "15/04/2025", estabelecimento: "João da Silva Santos", valor: "R$ 350,00", pagamento: "Débito", categoria: <Tag color="processing">Saúde</Tag> } ]}
-              columns={[ { title: "DATA", dataIndex: "data", key: "data" }, { title: "ESTABELECIMENTO", dataIndex: "estabelecimento", key: "estabelecimento" }, { title: "VALOR", dataIndex: "valor", key: "valor" }, { title: "PAGAMENTO", dataIndex: "pagamento", key: "pagamento" }, { title: "CATEGORIA", dataIndex: "categoria", key: "categoria" } ]}
-              scroll={{  }}
+          </Form.Item>
+          <Form.Item
+            label="Nome da categoria de despesa"
+          >
+            <Input
+              placeholder="Educação"
+              value={value2}
+              onChange={(...args) => { let value2 = args[0].target.value; setValue2(value2); }}
             />
-          </Card>
-        </Col>
-        <Col
-          xs={24}
-          md={12}
-          xl={10}
-        />
-      </Row>
-    </Layout.Content>
-    <Layout.Footer
-      style={{ backgroundColor: "#ffffff" }}
-    >
-      <Row
-        gutter={16}
-        justify="space-between"
-      >
-        <Col>
-          <Typography.Text>
-            © Elter Girotto da Cruz
-          </Typography.Text>
-        </Col>
-        <Col />
-      </Row>
-    </Layout.Footer>
+          </Form.Item>
+          <Form.Item
+            label="Descrição da categoria de despesa"
+          >
+            <Input
+              placeholder=""
+              size="middle"
+              type="text"
+              value={value4}
+              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
+            />
+          </Form.Item>
+          <Form.Item>
+            <div
+              style={{ display: "flex", gap: "20px" }}
+            >
+              <Button
+                type="primary"
+              >
+                Cadastrar
+              </Button>
+              <Button>
+                Cancelar
+              </Button>
+            </div>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   </Layout>
 </Layout>);
 }

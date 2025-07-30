@@ -2,7 +2,6 @@ import React from 'react';
 import { Badge } from 'antd';
 import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
-import { Cascader } from 'antd';
 import { Col } from 'antd';
 import { Divider } from 'antd';
 import { Dropdown } from 'antd';
@@ -21,13 +20,14 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function NovaSubcategoriaProduto() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [value, setValue] = React.useState(undefined);
-const [value2, setValue2] = React.useState('Vinho Malbec Santa Júlia');
-const [value4, setValue4] = React.useState('Vinho tinto de uva malbec - Vale do Uco');
+const [value2, setValue2] = React.useState(undefined);
+const [value4, setValue4] = React.useState('Dentista');
+const [value6, setValue6] = React.useState('Procedimentos odontológicos');
 
   return (<Layout
   hasSider={true}
@@ -44,7 +44,7 @@ const [value4, setValue4] = React.useState('Vinho tinto de uva malbec - Vale do 
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-86ed20.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-5fbbe8.PNG"
         width={130}
       />
     </Col>
@@ -231,14 +231,14 @@ const [value4, setValue4] = React.useState('Vinho tinto de uva malbec - Vale do 
             <Typography.Link
               href="#/"
             >
-              Produtos
+              Categorias de despesas
             </Typography.Link>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <Typography.Link
               href="#/"
             >
-              Novo produto
+              Nova subcategoria de produtos/serviços
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -254,56 +254,51 @@ const [value4, setValue4] = React.useState('Vinho tinto de uva malbec - Vale do 
       >
         <Form
           layout="horizontal"
-          style={{ padding: "24px", maxWidth: "600px" }}
+          style={{ padding: "14px", maxWidth: "600px" }}
+          colon={true}
+          size="middle"
         >
           <Typography.Title
             level={4}
           >
-            Cadastro de produto
+            Subcategoria de produtos/serviços
           </Typography.Title>
           <Divider />
           <Form.Item
-            label="Código do produto"
+            label="Categoria"
           >
             <Input
-              placeholder="679"
+              placeholder="15 - Saúde"
               disabled={true}
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
           </Form.Item>
           <Form.Item
-            label="Nome do produto"
+            label="Código da subcategoria"
           >
             <Input
-              placeholder="Saúde"
+              placeholder="21"
+              disabled={true}
               value={value2}
               onChange={(...args) => { let value2 = args[0].target.value; setValue2(value2); }}
             />
           </Form.Item>
           <Form.Item
-            label="Descrição do produto"
+            label="Nome da subcategoria"
           >
             <Input
-              placeholder=""
               value={value4}
               onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
             />
           </Form.Item>
           <Form.Item
-            label="Categoria do Produto"
+            label="Descrição da subcategoria"
           >
-            <Cascader
-              options={[ { value: "Alimentos", label: "Alimentos" }, { value: "Bebidas", label: "Bebidas" }, { value: "Educação", label: "Educação" }, { value: "Saúde", label: "Saúde" } ]}
-              placeholder="Bebidas"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Subcategoria do Produto"
-          >
-            <Cascader
-              options={[ { value: "Água", label: "Água" }, { value: "Refrigerante", label: "Refrigerante" }, { value: "Suco", label: "Suco" }, { value: "Vinho", label: "Vinho" } ]}
-              placeholder="Vinho"
+            <Input
+              placeholder=""
+              value={value6}
+              onChange={(...args) => { let value6 = args[0].target.value; setValue6(value6); }}
             />
           </Form.Item>
           <Form.Item>

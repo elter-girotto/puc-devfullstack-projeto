@@ -2,10 +2,10 @@ import React from 'react';
 import { Badge } from 'antd';
 import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
+import { Card } from 'antd';
 import { Col } from 'antd';
 import { Divider } from 'antd';
 import { Dropdown } from 'antd';
-import { Form } from 'antd';
 import * as Icons from '@ant-design/icons';
 import { Image } from 'antd';
 import { Input } from 'antd';
@@ -13,6 +13,7 @@ import { Layout } from 'antd';
 import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
+import { Table } from 'antd';
 import { Typography } from 'antd';
 
 function Icon(props) {
@@ -20,14 +21,11 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function Estabelecimentos() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [value, setValue] = React.useState(undefined);
-const [value2, setValue2] = React.useState(undefined);
-const [value4, setValue4] = React.useState('Livros');
-const [value6, setValue6] = React.useState('Despesas com livros didáticos, literatura, físicos e digitais');
 
   return (<Layout
   hasSider={true}
@@ -44,7 +42,7 @@ const [value6, setValue6] = React.useState('Despesas com livros didáticos, lite
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-e3d075.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-708c8e.PNG"
         width={130}
       />
     </Col>
@@ -90,7 +88,6 @@ const [value6, setValue6] = React.useState('Despesas com livros didáticos, lite
       <Menu.Item
         key="categorias"
         label="Categorias"
-        disabled={true}
         icon={
           <Icon
             icon="DatabaseOutlined"
@@ -231,93 +228,73 @@ const [value6, setValue6] = React.useState('Despesas com livros didáticos, lite
             <Typography.Link
               href="#/"
             >
-              Categorias de despesas
-            </Typography.Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item>
-            <Typography.Link
-              href="#/"
-            >
-              Nova subcategoria de despesas
+              Estabelecimentos
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
       </Space>
-    </Layout.Content>
-    <Row
-      gutter={[ 16, 16 ]}
-      justify="center"
-    >
-      <Col
-        xs={24}
-        sm={12}
+      <Row
+        gutter={[ 16, 16 ]}
       >
-        <Form
-          layout="horizontal"
-          style={{ padding: "14px", maxWidth: "600px" }}
-          colon={true}
-          size="middle"
+        <Col
+          xs={24}
+          md={12}
+          xl={8}
+        />
+        <Col
+          xs={24}
+          md={14}
+          xl={24}
         >
-          <Typography.Title
-            level={4}
-          >
-            Subcategoria de despesas
-          </Typography.Title>
-          <Divider />
-          <Form.Item
-            label="Categoria de despesa"
+          <Card
+            title="Estabelecimentos"
+            extra={
+              <Icon
+                icon="MoreOutlined"
+              />
+            }
           >
             <Input
-              placeholder="18 - Educação"
-              disabled={true}
+              placeholder="Filtre por nome do estabelecimento, CNPJ, endereço ou cidade"
+              style={{ width: "600px" }}
+              readOnly={true}
+              prefix={
+                <Icon
+                  icon="SearchOutlined"
+                />
+              }
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
-          </Form.Item>
-          <Form.Item
-            label="Código da subcategoria de despesa"
-          >
-            <Input
-              placeholder="23"
-              disabled={true}
-              value={value2}
-              onChange={(...args) => { let value2 = args[0].target.value; setValue2(value2); }}
+            <Table
+              dataSource={[ { key: "1", "cnpj-cpf": "12.151.422/0001-55", nome: "Supermercado Gaste Menos", endereco: "RUA 4A, 1560 - Vicente Pires", cidade: "Brasília", uf: "DF" }, { key: "2", "cnpj-cpf": "51.467.857/0001-80", nome: "Farmácia Pague Menos", endereco: "Quadra 107, 850 - Asa Sul", cidade: "Brasília", uf: "DF" }, { key: "3", "cnpj-cpf": "41.121.004/0001-72", nome: "Pet Shop Caramelo", endereco: "Rua 36 norte, 3500 - Águas Claras", cidade: "Brasília", uf: "DF" }, { key: "4", "cnpj-cpf": "10.421.452/0001-60", nome: "Supermercado Tauste Ltda", endereco: "Avenida Tiradentes, 1131", cidade: "Marília", uf: "SP" }, { key: "5", "cnpj-cpf": "12.432.564/0001-40", nome: "Confiança Supermercados", endereco: "Rua. Dr. Thimo Bruno Belucci, 255 - Jardim Aquarius", cidade: "Marília", uf: "SP" } ]}
+              columns={[ { title: "CNPJ/CPF", dataIndex: "cnpj-cpf", key: "cnpj-cpf" }, { title: "NOME", dataIndex: "nome", key: "nome" }, { title: "ENDEREÇO", dataIndex: "endereco", key: "endereco" }, { title: "CIDADE", dataIndex: "cidade", key: "cidade" }, { title: "UF", dataIndex: "uf", key: "uf" }, { title: " ", dataIndex: "editar-produto", key: "editar-produto" }, { title: " ", dataIndex: "excluir-produto", key: "excluir-produto" } ]}
+              scroll={{  }}
             />
-          </Form.Item>
-          <Form.Item
-            label="Nome da subcategoria de despesa"
-          >
-            <Input
-              value={value4}
-              onChange={(...args) => { let value4 = args[0].target.value; setValue4(value4); }}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Descrição da subcategoria de despesa"
-          >
-            <Input
-              placeholder=""
-              value={value6}
-              onChange={(...args) => { let value6 = args[0].target.value; setValue6(value6); }}
-            />
-          </Form.Item>
-          <Form.Item>
-            <div
-              style={{ display: "flex", gap: "20px" }}
-            >
-              <Button
-                type="primary"
-              >
-                Cadastrar
-              </Button>
-              <Button>
-                Cancelar
-              </Button>
-            </div>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+          </Card>
+        </Col>
+        <Col
+          xs={24}
+          md={12}
+          xl={10}
+        />
+      </Row>
+    </Layout.Content>
+    <Layout.Footer
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <Row
+        gutter={16}
+        justify="space-between"
+      >
+        <Col>
+          <Typography.Text>
+            © Elter Girotto da Cruz
+          </Typography.Text>
+        </Col>
+        <Col />
+      </Row>
+    </Layout.Footer>
   </Layout>
 </Layout>);
 }

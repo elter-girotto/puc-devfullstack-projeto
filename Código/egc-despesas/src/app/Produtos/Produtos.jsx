@@ -22,7 +22,7 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function Produtos() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);

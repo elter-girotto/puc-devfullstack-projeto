@@ -22,13 +22,10 @@ function Icon(props) {
     }
 
 
-export default function UXPinLayout() {
+export default function Despesas() {
 
 const [collapsed, setCollapsed] = React.useState(false);
 const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
-const [visible, setVisible] = React.useState(false);
-const [visible2, setVisible2] = React.useState(false);
-const [visible4, setVisible4] = React.useState(false);
 const [value, setValue] = React.useState(undefined);
 
   return (<Layout
@@ -46,8 +43,9 @@ const [value, setValue] = React.useState(undefined);
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-5683b9.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-255fc0.PNG"
         width={130}
+        preview={true}
       />
     </Col>
     <Menu
@@ -103,7 +101,6 @@ const [value, setValue] = React.useState(undefined);
       <Menu.Item
         key="financeiro"
         label="Financeiro"
-        disabled={true}
         icon={
           <Icon
             icon="DollarCircleOutlined"
@@ -233,7 +230,7 @@ const [value, setValue] = React.useState(undefined);
             <Typography.Link
               href="#/"
             >
-              Financeiro
+              Despesas
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -243,153 +240,16 @@ const [value, setValue] = React.useState(undefined);
       >
         <Col
           xs={24}
-          xl={8}
-          md={12}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Row
-              justify="space-between"
-            >
-              <Col>
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                    mark={true}
-                    code={false}
-                  >
-                    R$ 5.890,00
-                  </Typography.Title>
-                  <Typography.Text
-                    type="success"
-                    strong={true}
-                    ellipsis={true}
-                  >
-                    +30%
-                  </Typography.Text>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Total a vencer
-                
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="DollarCircleFilled"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col
-          xs={24}
           md={12}
           xl={8}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Row>
-              <Col
-                xs={18}
-              >
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                  >
-                    R$ 2.870,00
-                  </Typography.Title>
-                  <Typography.Text
-                    type="success"
-                    strong={true}
-                  >
-                    +20%
-                  </Typography.Text>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Total à vista a vencer
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="DollarCircleOutlined"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-        <Col
-          xs={24}
-          md={12}
-          xl={8}
-        >
-          <Card
-            style={{ height: "100%" }}
-          >
-            <Row>
-              <Col
-                xs={18}
-              >
-                <Space
-                  size="small"
-                  align="baseline"
-                >
-                  <Typography.Title
-                    level={3}
-                    style={{ margin: 0 }}
-                  >
-                    R$ 3.020,00
-                  </Typography.Title>
-                </Space>
-                <Typography.Text
-                  type="secondary"
-                  strong={true}
-                >
-                  Total a prazo a vencer
-                </Typography.Text>
-              </Col>
-              <Col
-                xs={6}
-                style={{ textAlign: "center" }}
-              >
-                <Icon
-                  icon="CalendarOutlined"
-                  style={{ fontSize: "60px", color: "#1890ff" }}
-                />
-              </Col>
-            </Row>
-          </Card>
-        </Col>
+        />
         <Col
           xs={24}
           md={14}
           xl={24}
         >
           <Card
-            title="Financeiro"
+            title="Despesas"
             extra={
               <Icon
                 icon="MoreOutlined"
@@ -397,8 +257,8 @@ const [value, setValue] = React.useState(undefined);
             }
           >
             <Input
-              placeholder="Filtre despesas por data, estabelecimento, valor, vencimento, tipo de pagamento e parcelamento"
-              style={{ width: "800px" }}
+              placeholder="Consulte por data, estabelecimento, valor ou categoria"
+              style={{ width: "600px" }}
               readOnly={true}
               prefix={
                 <Icon
@@ -409,8 +269,8 @@ const [value, setValue] = React.useState(undefined);
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
             />
             <Table
-              dataSource={[ { key: "1", data: "24/04/2025", estabelecimento: "Supermercado Gaste Menos", valor: "R$ 825,12", vencimento: "25/05/2025", pagamento: "Crédito", parcelamento: <Tag color="success">à vista</Tag> }, { key: "2", data: "21/04/2025", estabelecimento: "Farmácia Pague Menos", valor: "R$ 122,14", vencimento: "25/05/2025", pagamento: "Crédito", parcelamento: <Tag color="processing">parcelado</Tag> }, { key: "3", data: "18/04/2025", estabelecimento: "Pet Shop Caramelo", valor: "R$ 125,00", vencimento: "18/04/2025", pagamento: "Pix", parcelamento: <Tag color="success">à vista</Tag> }, { key: "4", data: "15/04/2025", estabelecimento: "Supermercado Tauste", valor: "R$ 157,50", vencimento: "15/04/2025", pagamento: "Débito", parcelamento: <Tag color="success">à vista</Tag> }, { key: "5", data: "14/04/2025", estabelecimento: "Supermercados Confiança", valor: "R$ 189,35", vencimento: "25/05/2025", pagamento: "Crédito", parcelamento: <Tag color="processing">parcelado</Tag> } ]}
-              columns={[ { title: "DATA", dataIndex: "data", key: "data" }, { title: "ESTABELECIMENTO", dataIndex: "estabelecimento", key: "estabelecimento" }, { title: "VALOR", dataIndex: "valor", key: "valor" }, { title: "VENCIMENTO", dataIndex: "vencimento", key: "vencimento" }, { title: "PAGAMENTO", dataIndex: "pagamento", key: "pagamento" }, { title: "PARCELAMENTO", dataIndex: "parcelamento", key: "parcelamento" } ]}
+              dataSource={[ { key: "1", data: "24/04/2025", estabelecimento: "Supermercado Gaste Menos", valor: "R$ 825,12", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "2", data: "21/04/2025", estabelecimento: "Farmácia Pague Menos", valor: "R$ 122,14", pagamento: "Crédito", categoria: <Tag color="processing">Saúde</Tag> }, { key: "3", data: "18/04/2025", estabelecimento: "Pet Shop Caramelo", valor: "R$ 125,00", pagamento: "Pix", categoria: <Tag color="error">Pet</Tag> }, { key: "4", data: "15/04/2025", estabelecimento: "Supermercado Tauste", valor: "R$ 157,50", pagamento: "Débito", categoria: <Tag color="success">Alimentação</Tag> }, { key: "5", data: "14/04/2025", estabelecimento: "Supermercados Confiança", valor: "R$ 189,35", pagamento: "Crédito", categoria: <Tag color="success">Alimentação</Tag> } ]}
+              columns={[ { title: "DATA", dataIndex: "data", key: "data" }, { title: "ESTABELECIMENTO", dataIndex: "estabelecimento", key: "estabelecimento" }, { title: "VALOR", dataIndex: "valor", key: "valor" }, { title: "PAGAMENTO", dataIndex: "pagamento", key: "pagamento" }, { title: "CATEGORIA", dataIndex: "categoria", key: "categoria" }, { title: " ", dataIndex: "editar-despesa", key: "editar-despesa" } ]}
               scroll={{  }}
             />
           </Card>

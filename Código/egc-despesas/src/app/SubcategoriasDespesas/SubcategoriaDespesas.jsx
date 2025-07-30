@@ -4,7 +4,6 @@ import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
 import { Card } from 'antd';
 import { Col } from 'antd';
-import { Divider } from 'antd';
 import { Dropdown } from 'antd';
 import * as Icons from '@ant-design/icons';
 import { Image } from 'antd';
@@ -14,17 +13,19 @@ import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
 import { Table } from 'antd';
+import { Tag } from 'antd';
 import { Typography } from 'antd';
+import MenuGeral from '../MenuGeral/MenuGeral';
 
 function Icon(props) {
       return React.createElement(Icons[props.icon], { ...props });
     }
 
 
-export default function UXPinLayout() {
+export default function SubcategoriaDespesas() {
 
 const [collapsed, setCollapsed] = React.useState(false);
-const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
+//const [selectedKeys, setSelectedKeys] = React.useState(["i","t","e","m","-","1"]);
 const [value, setValue] = React.useState(undefined);
 
   return (<Layout
@@ -42,96 +43,11 @@ const [value, setValue] = React.useState(undefined);
       style={{ textAlign: "center", paddingTop: "100px", paddingBottom: "100px" }}
     >
       <Image
-        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-75c419.PNG"
+        src="https://s3.amazonaws.com/upload.uxpin/files/1373907/1320082/Logo-81f95b7390b28bad143414b2da43617d-2b9ba7.PNG"
         width={130}
       />
     </Col>
-    <Menu
-      mode="inline"
-      theme="dark"
-      selectedKeys={selectedKeys}
-      onSelect={(...args) => { let selectedKeys = args[0].selectedKeys; setSelectedKeys(selectedKeys); }}
-    >
-      <Menu.Item
-        key="despesas"
-        label="Despesas"
-        icon={
-          <Icon
-            icon="CalculatorOutlined"
-          />
-        }
-      >
-        Despesas
-      </Menu.Item>
-      <Menu.Item
-        key="estabelecimentos"
-        label="Estabelecimentos"
-        icon={
-          <Icon
-            icon="BankOutlined"
-          />
-        }
-      >
-        Estabelecimentos
-      </Menu.Item>
-      <Menu.Item
-        key="produtos"
-        label="Produtos"
-        icon={
-          <Icon
-            icon="ShopOutlined"
-          />
-        }
-      >
-        Produtos
-      </Menu.Item>
-      <Menu.Item
-        key="categorias"
-        label="Categorias"
-        disabled={true}
-        icon={
-          <Icon
-            icon="DatabaseOutlined"
-          />
-        }
-      >
-        Categorias despesas
-      </Menu.Item>
-      <Menu.Item
-        key="financeiro"
-        label="Financeiro"
-        icon={
-          <Icon
-            icon="DollarCircleOutlined"
-          />
-        }
-      >
-        Financeiro
-      </Menu.Item>
-      <Menu.Item
-        key="deducaoIR"
-        label="Dedução IR"
-        icon={
-          <Icon
-            icon="CalendarOutlined"
-          />
-        }
-      >
-        Dedução IR
-      </Menu.Item>
-      <Divider />
-      <Menu.Item
-        key="ajuda"
-        label="Ajuda"
-        icon={
-          <Icon
-            icon="MailOutlined"
-          />
-        }
-      >
-        Ajuda
-      </Menu.Item>
-    </Menu>
+    <MenuGeral />
   </Layout.Sider>
   <Layout
     hasSider={false}
@@ -229,7 +145,7 @@ const [value, setValue] = React.useState(undefined);
             <Typography.Link
               href="#/"
             >
-              Categorias de despesas
+              Subcategorias de despesas
             </Typography.Link>
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -248,7 +164,7 @@ const [value, setValue] = React.useState(undefined);
           xl={24}
         >
           <Card
-            title="Categorias de Despesas"
+            title="Subcategorias de Despesas"
             extra={
               <Icon
                 icon="MoreOutlined"
@@ -256,7 +172,7 @@ const [value, setValue] = React.useState(undefined);
             }
           >
             <Input
-              placeholder="Filtre pela categoria de despesa"
+              placeholder="Filtre pela subcategoria ou categoria de despesas"
               style={{ width: "600px" }}
               readOnly={true}
               prefix={
@@ -266,10 +182,12 @@ const [value, setValue] = React.useState(undefined);
               }
               value={value}
               onChange={(...args) => { let value = args[0].target.value; setValue(value); }}
+              
             />
+            
             <Table
-              dataSource={[ { key: "1", "categoria-despesa": "Alimentação" }, { key: "2", "categoria-despesa": "Educação" }, { key: "3", "categoria-despesa": "Lazer" }, { key: "4", "categoria-despesa": "Saúde" } ]}
-              columns={[ { title: "NOME DA CATEGORIA DE DESPESA", dataIndex: "categoria-despesa", key: "categoria-despesa" }, { title: " ", dataIndex: "editar-categoria", key: "editar-categoria" } ]}
+              dataSource={[ { key: "1", "subcategoria-despesa": "Açougue", "categoria-despesa": <Tag color="success">Alimentação</Tag> }, { key: "2", "subcategoria-despesa": "Combustível", "categoria-despesa": <Tag color="processing">Transporte</Tag> }, { key: "3", "subcategoria-despesa": "Farmácia", "categoria-despesa": <Tag color="error">Saúde</Tag> }, { key: "4", "subcategoria-despesa": "Hortifruti", "categoria-despesa": <Tag color="success">Alimentação</Tag> }, { key: "5", "subcategoria-despesa": "Supermercado", "categoria-despesa": <Tag color="success">Alimentação</Tag> }, { key: "6", "subcategoria-despesa": "Veterinário", "categoria-despesa": <Tag color="warning">Transporte</Tag> } ]}
+              columns={[ { title: "NOME DA SUBCATEGORIA DE DESPESA", dataIndex: "subcategoria-despesa", key: "subcategoria-despesa" }, { title: "CATEGORIA DE DESPESA", dataIndex: "categoria-despesa", key: "categoria-despesa" }, { title: " ", dataIndex: "editar-categoria", key: "editar-categoria" } ]}
               scroll={{  }}
             />
           </Card>

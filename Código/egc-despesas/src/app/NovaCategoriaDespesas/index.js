@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import UXPinLayout from './src/UXPinLayout.jsx';
+import NovaCategoriaDespesas from './NovaCategoriaDespesas.jsx';
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<UXPinLayout />, document.getElementById("root"));
+root.render(<NovaCategoriaDespesas />, document.getElementById("root"));
