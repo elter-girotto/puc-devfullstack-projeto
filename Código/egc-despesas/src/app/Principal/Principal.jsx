@@ -5,18 +5,17 @@ import { Breadcrumb } from 'antd';
 import { Button } from 'antd';
 import { Card } from 'antd';
 import { Col } from 'antd';
-import { Divider } from 'antd';
 import { Dropdown } from 'antd';
 import * as Icons from '@ant-design/icons';
 import { Image } from 'antd';
 import { Input } from 'antd';
 import { Layout } from 'antd';
-import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
 import { Table } from 'antd';
 import { Tag } from 'antd';
 import { Typography } from 'antd';
+import MenuGeral from '../MenuGeral/MenuGeral';
 
 function Icon(props) {
       return React.createElement(Icons[props.icon], { ...props });
@@ -51,93 +50,7 @@ const [value, setValue] = React.useState(undefined);
         width={130}
       />
     </Col>
-    <Menu
-      mode="inline"
-      theme="dark"
-      selectable={true}
-      triggerSubMenuAction="click"
-      selectedKeys={selectedKeys}
-      onSelect={(...args) => { let selectedKeys = args[0].selectedKeys; setSelectedKeys(selectedKeys); }}
-    >
-      <Menu.Item
-        key="despesas"
-        label="Despesas"
-        icon={
-          <Icon
-            icon="CalculatorOutlined"
-          />
-        }
-      >
-        Despesas
-      </Menu.Item>
-      <Menu.Item
-        key="estabelecimentos"
-        label="Estabelecimentos"
-        icon={
-          <Icon
-            icon="BankOutlined"
-          />
-        }
-      >
-        Estabelecimentos
-      </Menu.Item>
-      <Menu.Item
-        key="produtos"
-        label="Produtos"
-        icon={
-          <Icon
-            icon="ShopOutlined"
-          />
-        }
-      >
-        Produtos
-      </Menu.Item>
-      <Menu.Item
-        key="categorias"
-        label="Categorias"
-        icon={
-          <Icon
-            icon="DatabaseOutlined"
-          />
-        }
-      >
-        Categorias despesas
-      </Menu.Item>
-      <Menu.Item
-        key="financeiro"
-        label="Financeiro"
-        icon={
-          <Icon
-            icon="DollarCircleOutlined"
-          />
-        }
-      >
-        Financeiro
-      </Menu.Item>
-      <Menu.Item
-        key="deducaoIR"
-        label="Dedução IR"
-        icon={
-          <Icon
-            icon="CalendarOutlined"
-          />
-        }
-      >
-        Dedução IR
-      </Menu.Item>
-      <Divider />
-      <Menu.Item
-        key="ajuda"
-        label="Ajuda"
-        icon={
-          <Icon
-            icon="MailOutlined"
-          />
-        }
-      >
-        Ajuda
-      </Menu.Item>
-    </Menu>
+    <MenuGeral />
   </Layout.Sider>
   <Layout
     hasSider={false}

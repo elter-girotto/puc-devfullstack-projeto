@@ -1,10 +1,6 @@
 "use client";
 
 import React from 'react';
-//import { createRoot } from 'react-dom/client';
-//import UXPinLayout from './NovaDespesa/NovaDespesa.jsx';
-//import NovaDespesa from './NovaDespesa/NovaDespesa.jsx';
-//import NovaSubcategoriaDespesas from './NovaSubcategoriaDespesas/NovaSubcategoriaDespesas.jsx';
 import NovaCategoriaProduto from './NovaCategoriaProduto/NovaCategoriaProduto.jsx';
 import NovaCategoriaDespesas from './NovaCategoriaDespesas/NovaCategoriaDespesas.jsx';
 import CategoriaDespesas from './CategoriaDespesas/CategoriaDespesas.jsx';
@@ -29,7 +25,7 @@ import SubcategoriaDespesas from './SubcategoriasDespesas/SubcategoriaDespesas.j
 export default function Home() {
   return (
     <div>
-      <CategoriaDespesas />      
+      <SubcategoriaDespesas />      
     </div>
   );
 }

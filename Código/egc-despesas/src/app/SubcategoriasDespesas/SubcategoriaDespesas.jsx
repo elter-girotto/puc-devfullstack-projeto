@@ -9,7 +9,6 @@ import * as Icons from '@ant-design/icons';
 import { Image } from 'antd';
 import { Input } from 'antd';
 import { Layout } from 'antd';
-import { Menu } from 'antd';
 import { Row } from 'antd';
 import { Space } from 'antd';
 import { Table } from 'antd';
